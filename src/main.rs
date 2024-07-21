@@ -110,7 +110,7 @@ fn main() -> Result<()> {
                 if options.ignore_pypi_errors {
                     tracing::warn!("ignoring PyPI package since PyPI packages are not supported");
                 } else {
-                    anyhow::bail!("PyPI packages are not supported. Specify `ignore_pypi_errors` to ignore this error");
+                    anyhow::bail!("PyPI packages are not supported. Specify `--ignore-pypi-errors` to ignore this error");
                 }
             }
         }

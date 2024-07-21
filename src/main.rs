@@ -63,7 +63,10 @@ fn build_explicit_spec<'a>(
     })
 }
 
-fn write_explicit_spec(target: &Path, exp_env_spec: &ExplicitEnvironmentSpec) -> Result<()> {
+fn write_explicit_spec(
+    target: impl AsRef<Path>,
+    exp_env_spec: &ExplicitEnvironmentSpec,
+) -> Result<()> {
     let platform = exp_env_spec
         .platform
         .ok_or(anyhow!("No platform specified in ExplicitEnvironmentSpec"))?
@@ -142,7 +145,7 @@ fn main() -> Result<()> {
         ))
         .into_os_string();
 
-    write_explicit_spec(target.as_ref(), &ees)?;
+    write_explicit_spec(target, &ees)?;
 
     Ok(())
 }

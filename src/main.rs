@@ -123,7 +123,7 @@ fn write_pypi_requirements(target: impl AsRef<Path>, packages: &[PypiPackage]) -
         };
 
         // remove "direct+ since not valid for pip urls"
-        let s = s.replace("direct+", "");
+        let s = s.trim_start_matches("direct+");
 
         let hash = match (include_hash, get_pypi_hash_str(p.data().package)) {
             (true, Some(h)) => format!(" {}", h),
